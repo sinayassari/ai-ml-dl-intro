@@ -1,4 +1,4 @@
-# AI / ML / DL Intro
+# Artificial Intelligence / Machine Learning / Deep Learning Intro
 
 A personal learning repo for getting hands-on with the fundamentals of AI, Machine Learning, and Deep Learning — starting with PyTorch tensor basics.
 
