@@ -1,13 +1,17 @@
 # AI / ML / DL Intro
 
-A personal learning repository for getting hands-on with the fundamentals of **Machine Learning** and **Deep Learning** using **PyTorch**. The code here walks through core tensor operations — the building blocks behind every neural network — with inline explanations and printed output for each concept.
+A personal learning repository for getting hands-on with the fundamentals of **Machine Learning** and **Deep Learning** using **PyTorch**. It walks through core tensor operations, then builds up to a full end-to-end PyTorch workflow — creating data, building a model, training it, evaluating it, and saving/loading it — with inline explanations and printed/plotted output at each step.
 
 ## 📁 Project Structure
 
 ```
 ai-ml-dl-intro/
-├── example/            # Supplementary example script(s)
-├── ml-intro.py          # Main walkthrough: PyTorch tensor fundamentals
+├── example/
+│   ├── 00_pytorch__fundamentals.ipynb   # Tensor basics notebook
+│   ├── 01_pytorch_workflow.ipynb        # End-to-end PyTorch workflow notebook
+│   └── models/
+│       └── 01_pytorch_workflow.model_0.pth   # Saved trained model weights
+├── ml-intro.py          # Script walkthrough: PyTorch tensor fundamentals
 ├── pytorch.py           # Minimal PyTorch sanity-check script
 ├── requirments.txt      # Python dependencies
 └── .gitignore
@@ -15,8 +19,8 @@ ai-ml-dl-intro/
 
 ## 🧠 What's Covered
 
-`ml-intro.py` is the core file and steps through the following PyTorch tensor concepts, each with a printed example:
-
+### `ml-intro.py`
+A script that steps through core PyTorch tensor concepts, each with a printed example:
 - **Creating tensors** — from raw Python lists, and with `torch.zeros`, `torch.ones`, `torch.rand`
 - **Device check** — confirming whether a tensor is running on CPU or GPU (`tensor.device`)
 - **Element-wise multiplication** — multiplying two tensors of the same shape
@@ -27,13 +31,37 @@ ai-ml-dl-intro/
 - **`argmax()`** — finding the index of the maximum value along a dimension
 - **`gather()`** — selecting specific values from a tensor by index
 
-`pytorch.py` is a tiny script for verifying the PyTorch install and checking CUDA (GPU) availability.
+### `pytorch.py`
+A tiny script for verifying the PyTorch install and checking CUDA (GPU) availability.
+
+### `example/00_pytorch__fundamentals.ipynb`
+A deeper dive into tensor fundamentals in notebook form:
+- Scalars, vectors, matrices, and tensors — shape and `ndim`
+- Random and range-based tensor creation (`torch.rand`, `torch.arange`, `zeros_like`)
+- Tensor datatypes and type conversion (`float32` ↔ `float16`)
+- Tensor operations: addition, subtraction, multiplication, division, matrix multiplication (`torch.matmul` / `torch.mm`)
+- Aggregation: `min`, `max`, `mean`, `sum`, `argmin`, `argmax`
+- Reshaping, viewing, stacking, squeezing, and unsqueezing tensors
+- Multi-dimensional indexing
+- Converting between NumPy arrays and PyTorch tensors
+
+### `example/01_pytorch_workflow.ipynb`
+A full, practical PyTorch modeling workflow:
+- Generating synthetic linear data and splitting it into train/test sets
+- Visualizing training data, test data, and predictions
+- Defining a custom `LinearRegressionModel` (subclassing `nn.Module`) with learnable `weights` and `bias` parameters
+- Writing a training loop with `nn.L1Loss` and `torch.optim.SGD`
+- Tracking and plotting training vs. test loss curves over 200 epochs
+- Saving a trained model's `state_dict()` to disk and reloading it (`example/models/01_pytorch_workflow.model_0.pth`)
+- Verifying that predictions from the loaded model match the original
+- Re-running the same workflow with explicit device-agnostic code (`cuda` vs `cpu`)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Python 3.9+
 - pip
+- Jupyter Notebook / JupyterLab (to run the `.ipynb` files)
 
 ### Installation
 
@@ -48,8 +76,13 @@ pip install -r requirments.txt
 ### Running the examples
 
 ```bash
+# Scripts
 python ml-intro.py
 python pytorch.py
+
+# Notebooks
+jupyter notebook example/00_pytorch__fundamentals.ipynb
+jupyter notebook example/01_pytorch_workflow.ipynb
 ```
 
 ## 📦 Dependencies
@@ -74,7 +107,7 @@ Pinned in `requirments.txt`:
 
 ## 🎯 Purpose
 
-This is a personal, work-in-progress project for learning AI/ML/DL concepts from the ground up — starting with tensor mechanics in PyTorch before moving on to models, training loops, and more advanced deep learning topics.
+This is a personal, work-in-progress project for learning AI/ML/DL concepts from the ground up — starting with tensor mechanics in PyTorch, then progressing through a complete model training-and-evaluation workflow, before moving on to more advanced deep learning topics (CNNs, custom datasets, and beyond).
 
 ## 📄 License
 
